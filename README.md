@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BiDashboardUi
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
@@ -57,3 +58,7 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+=======
+# BI-Dashboard
+Business Intelligence Dashboard With ASP.Net Core as backend and Angular For frontend and PostgreSQL for database 
+>>>>>>> f9001a368a53e81056a5b3d263b72650c7e5ce87
