@@ -1,0 +1,17 @@
+<app-navbar id="navbar" class="navbar navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">
+    <span class="logo logo-left">Mako</span>
+    <span class="logo logo-right"> Tech</span>
+  </a>
+</app-navbar>
+
+<div class="container-fluid">
+  <div class="row" id="mainContent">
+    <app-sidebar id="sideBar" class="col-md-2 sidebar">
+    </app-sidebar>     
+
+    <div class="col-md-10 pt-3" id="dashboard">
+      <router-outlet></router-outlet>     
+    </div>
+  </div>
+</div>
