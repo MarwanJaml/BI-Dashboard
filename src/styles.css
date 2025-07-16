@@ -96,13 +96,13 @@ a:hover {
 /* Main Content Area */
 .main-content {
     margin-left: 300px; /* Same as sidebar width */
-    padding-top: 65px; /* Same as navbar height */
+    padding-top: 80px; /* Same as navbar height */
     min-height: calc(100vh - 56px);
 }
 
 /* Section Container */
 .section-container {
-    padding: 30px;
+    padding: 10px;
 }
 
 /* Card Theme */
