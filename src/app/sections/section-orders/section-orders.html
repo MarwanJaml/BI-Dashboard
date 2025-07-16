@@ -1,8 +1,11 @@
- <div class=" main-content">
-  <h2>
-    Latest Orders
-  </h2>
-  <table class="table table-inverse table-hover">
+<div class="main-content">
+  <h2>Latest Orders</h2>
+  
+  <!-- Loading Indicator -->
+  <div *ngIf="loading" class="alert alert-info">Loading orders...</div>
+  
+  <!-- Orders Table -->
+  <table class="table table-inverse table-hover" *ngIf="!loading && orders?.length">
     <thead class="thead-dark">
       <tr>
         <th>ID</th>
@@ -14,19 +17,35 @@
       </tr>
     </thead>
     <tbody>
-      <!--tr *ngFor="let order of orders">
+      <tr *ngFor="let order of orders">
         <td>{{ order.id }}</td>
-        <td>{{ order.customer.name }}</td>
-        <td>{{ order.total }}</td>
-        <td>{{ order.placed | date: 'short' }}</td>
-
-        <td>Status</td>
-      </tr-->
+        <td>{{ order.customer.name || 'N/A' }}</td>
+        <td>{{ order.total | currency }}</td>
+        <td>{{ order.placed | date:'short' }}</td>
+        <td>{{ order.completed ? (order.completed | date:'short') : 'N/A' }}</td>
+        <td>
+          <span [class.badge-success]="order.completed" [class.badge-warning]="!order.completed" class="badge">
+            {{ order.completed ? 'Completed' : 'Pending' }}
+          </span>
+        </td>
+      </tr>
     </tbody>
   </table>
-  <app-pagination (goPrev)="goToPrevious()"
-  (goNext)="goToNext()">
 
-  </app-pagination>
+  <!-- Empty State -->
+  <div *ngIf="!loading && !orders?.length" class="alert alert-warning">
+    No orders found
+  </div>
 
+  <!-- Pagination -->
+    <app-pagination
+      [page]="page"
+      [count]="total"
+      [perPage]="limit"
+      [pageToShow]="5"
+      [loading]="loading"
+      (goPrev)="onPreviousPage()"
+      (goNext)="onNextPage()"
+      (goToPage)="onGoToPage($event)">
+    </app-pagination>
 </div>
