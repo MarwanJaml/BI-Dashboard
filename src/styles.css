@@ -24,7 +24,7 @@ a:hover {
 }
 
 .shadow {
-    box-shadow: 0 8px 12px rgba(0,0,0,0.2), 0 5px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 5px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Navbar Styles */
@@ -41,25 +41,25 @@ a:hover {
 }
 
 .logo-left {
-    background-color: #dc3545;
-    color: white;
+    background-color: #494194;
+    color: #06bbcf;
     padding: 0.25rem 0.5rem;
     border-radius: 3px;
 }
 
 .logo-right {
-    color: #f7fff7;
+    color: #06bbcf;
     margin-left: 0.25rem;
 }
 
 /* Sidebar Styles */
 .sidebar {
     background-color: #191F26;
-    min-height: calc(100vh - 56px); /* Subtract navbar height */
+    min-height: calc(100vh - 56px);
     padding: 1rem 0;
-    border-right: 1px solid #2a66ab;
+    border-right: 1px solid #1ce6fd;
     position: fixed;
-    top: 56px; /* Height of navbar */
+    top: 56px;
     left: 0;
     width: 250px;
     z-index: 1020;
@@ -95,14 +95,37 @@ a:hover {
 
 /* Main Content Area */
 .main-content {
-    margin-left: 300px; /* Same as sidebar width */
-    padding-top: 80px; /* Same as navbar height */
+    margin-left: 250px;
+    padding-top: 56px;
+    padding-left: 15px;
+    padding-right: 15px;
     min-height: calc(100vh - 56px);
+    width: calc(100vw - 250px);
 }
 
-/* Section Container */
-.section-container {
-    padding: 10px;
+.main-content .container-fluid,
+.main-content>div {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+}
+
+.main-content .row {
+    margin: 0 !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.main-content .col-md-6,
+.main-content .col-md-4,
+.main-content .col-6,
+.main-content .col-12 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin-bottom: 15px;
+    max-width: none !important;
 }
 
 /* Card Theme */
@@ -123,31 +146,14 @@ a:hover {
     background-color: #494F56;
 }
 
-.cards {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Chart Sizing Fixes */
+/* Chart Sizing */
 .card-body {
     min-height: 350px;
-    padding: 20px;
-}
-
-/* Fix chart container sizing */
-app-bar-chart, app-pie-chart, app-line-chart {
-    display: block;
+    padding: 15px;
     width: 100%;
-    height: 250px;
+    position: relative;
 }
 
-/* Ensure charts are responsive */
-canvas {
-    max-width: 100% !important;
-    height: auto !important;
-}
-
-/* Card Header Theme */
 .card-header-theme {
     background-color: #2A3037;
     color: #eee;
@@ -157,40 +163,154 @@ canvas {
     border-top-left-radius: 2px;
 }
 
+.card {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Chart containers */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Line chart specific styling */
+.line-chart-container {
+    height: 400px;
+}
+
+.full-size-chart {
+    height: 100%;
+    width: 100%;
+}
+
+.detailed-chart-body {
+    height: calc(100vh - 130px);
+    /* Adjust this based on your header/button height */
+    padding: 0;
+}
+
+/* === Line Chart Fullscreen Fix (Scoped) === */
+.detailed-view {
+    height: calc(100vh - 56px);
+    /* subtract navbar height */
+}
+
+.detailed-view .card-body {
+    height: calc(100vh - 110px);
+    /* subtract card-header + some padding */
+    padding: 0 !important;
+}
+
+.detailed-view .chart-container {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.detailed-view .chart-container canvas {
+    height: 100% !important;
+    width: 100% !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .sidebar {
         transform: translateX(-100%);
         transition: transform 0.3s ease;
     }
-    
+
     .sidebar.show {
         transform: translateX(0);
     }
-    
+
     .main-content {
         margin-left: 0;
+        width: 100vw;
     }
-    
-    .col-md-6 {
+
+    .col-md-6,
+    .col-md-4 {
         margin-bottom: 20px;
     }
+
+    /* Sales view (default) */
+    .sales-view .stats {
+        /* Your sales view specific styles */
+        color: #333;
+    }
+
+    /* Simple View (Sales View) */
+    .sales-view {
+
+        /* Hide detailed elements */
+        .chart-legend,
+        .chart-tooltips,
+        .axis-labels,
+        .data-points {
+            display: none;
+        }
+
+        /* Simplify chart appearance */
+        .chart-container {
+            height: 250px;
+        }
+    }
+
+    .clickable-header {
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .clickable-header:hover {
+        color: #4e73df;
+        /* Use your theme color */
+    }
+
+    .card-theme {
+        transition: transform 0.2s ease;
+    }
+
+    .card-theme:hover {
+        transform: translateY(-2px);
+    }
+
+    /* Add to your dashboard.component.css */
+    .card-body:hover {
+        background-color: #f8f9fa;
+        transition: background-color 0.3s ease;
+    }
+
+    .clickable-chart {
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .clickable-chart:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Optional: Add a subtle border on hover */
+    .card:hover {
+        border-color: #007bff;
+        transition: border-color 0.3s ease;
+    }
 }
 
-/* Container fluid override */
 .container-fluid {
-    padding: 0;
+    padding: 0 !important;
+    max-width: none !important;
 }
 
-.row {
-    margin: 0;
-}
+@media (min-width: 769px) {
+    .main-content {
 
-/* Remove default Bootstrap column padding for full layout */
-#mainContent {
-    padding: 0;
-}
-
-#dashboard {
-    padding: 0;
+        max-width: calc(100vw - 250px);
+    }
 }

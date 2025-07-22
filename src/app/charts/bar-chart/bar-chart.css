@@ -1,0 +1,86 @@
+/* bar-chart.component.css */
+/* Use :host to scope styles to this component only */
+
+/* Default chart container for dashboard cards */
+:host .chart-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    min-height: 300px;
+}
+
+:host canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Full view styles - only apply when this class is present */
+:host .full-view-wrapper {
+    height: calc(100vh - 200px);
+    min-height: 500px;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+}
+
+:host .full-view-wrapper .chart-container {
+    height: 100%;
+    min-height: calc(100vh - 300px);
+}
+
+:host .full-view-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Back button styling */
+:host .btn-outline-light {
+    border-color: #f7fff7;
+    color: #f7fff7;
+}
+
+:host .btn-outline-light:hover {
+    background-color: #f7fff7;
+    color: #2A3037;
+}
+
+/* Full page layout - only for detailed view */
+:host .detailed-view {
+    position: fixed;
+    top: 56px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    background-color: #1C2228;
+    z-index: 1000;
+}
+
+:host .detailed-view .card-theme {
+    height: calc(100vh - 120px);
+    margin: 15px;
+}
+
+:host .detailed-view .card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :host .detailed-view {
+        left: 0;
+    }
+
+    :host .full-view-wrapper {
+        height: calc(100vh - 160px);
+        min-height: 300px;
+        padding: 15px;
+    }
+
+    :host .chart-container {
+        min-height: 250px;
+    }
+}

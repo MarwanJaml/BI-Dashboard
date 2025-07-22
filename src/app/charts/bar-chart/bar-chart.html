@@ -1,8 +1,37 @@
-<div class="chart">
-  <canvas baseChart
-    [datasets]="barChartData"
-    [labels]="barChartLabels"
-    [options]="barChartOptions"
-    [legend]="barChartLegend">
-  </canvas>
+<!-- bar-chart.component.html -->
+<!-- Dashboard view (default) -->
+<div *ngIf="!isDetailedView" class="chart-container">
+  <div class="chart" (click)="onChartClick()">
+    <canvas baseChart *ngIf='barChartData && barChartData.length > 0' [datasets]="barChartData"
+      [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"></canvas>
+  </div>
+</div>
+
+<!-- Detailed view (full screen) -->
+<div *ngIf="isDetailedView" class="detailed-view">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-3 shadow card-theme">
+          <div class="card-header card-header-theme d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Daily Orders - Detailed View</h5>
+            <button class="btn btn-outline-light btn-sm" (click)="goBack()">
+              <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="full-view-wrapper">
+              <div class="chart-container">
+                <div class="chart" (click)="onChartClick()" style="cursor: pointer;">
+                  <canvas baseChart *ngIf='barChartData && barChartData.length > 0' [datasets]="barChartData"
+                    [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"></canvas>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

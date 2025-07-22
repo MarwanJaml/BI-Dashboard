@@ -1,0 +1,19 @@
+/* bar-chart.component.css */
+.detailed-view {
+    height: 100vh;
+    /* Full viewport height */
+    width: 100vw;
+    /* Full viewport width */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    /* Ensure it appears above other content */
+    background: white;
+}
+
+.detailed-view canvas {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 500px;
+}

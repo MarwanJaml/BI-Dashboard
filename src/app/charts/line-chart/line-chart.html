@@ -1,8 +1,32 @@
-<div class="chart">
-  <canvas baseChart
-    *ngIf="lineChartData"
-    [type]="lineChartType"
-    [data]="lineChartData"
-    [options]="lineChartOptions">
-  </canvas>
+<!-- Dashboard view (default) -->
+<div *ngIf="!isDetailedView" class="chart-container">
+  <div class="chart">
+    <canvas baseChart *ngIf="lineChartData" [type]="lineChartType" [datasets]="lineChartData" [labels]="lineChartLabels"
+      [options]="lineChartOptions">
+    </canvas>
+  </div>
+</div>
+<!-- Detailed view (full screen) -->
+<div *ngIf="isDetailedView" class="detailed-view">
+  <div class="container-fluid h-100 p-0">
+    <div class="row h-100 m-0">
+      <div class="col-12 h-100 p-0">
+        <div class="card h-100 mb-0 shadow card-theme">
+          <div class="card-header card-header-theme d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Daily Orders - Detailed View</h5>
+            <button class="btn btn-outline-light btn-sm" (click)="goBack()">
+              <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+            </button>
+          </div>
+          <div class="card-body p-0 detailed-chart-body">
+            <div class="chart-container full-size-chart">
+              <canvas baseChart *ngIf="lineChartData" [type]="lineChartType" [datasets]="lineChartData"
+                [labels]="lineChartLabels" [options]="lineChartOptions">
+              </canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

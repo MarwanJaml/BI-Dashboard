@@ -1,46 +1,53 @@
-<!-- Navbar -->
-
-
-<!-- Sidebar -->
-
-
 <!-- Main Content -->
 <div class="main-content">
-  <div class="section-container">
+  <div>
+    <!-- First Row - Two Cards Side by Side -->
     <div class="row">
-      <!-- First Row - Two Cards Side by Side -->
+      <!-- Bar Chart Card -->
       <div class="col-md-6">
         <div class="card mb-3 shadow card-theme">
-          <div class="card-header card-header-theme">
+          <div class="card-header card-header-theme d-flex justify-content-between align-items-center">
             <h5>Daily Orders</h5>
+            <button (click)="navigateToBarChartDetail()" class="btn btn-sm btn-outline-secondary">
+              View Details <i class="fas fa-arrow-right"></i>
+            </button>
           </div>
           <div class="card-body">
-            <app-bar-chart></app-bar-chart>
+            <app-bar-chart [isDetailedView]="false"></app-bar-chart>
           </div>
         </div>
       </div>
-      
+
+      <!-- Pie Chart Card -->
       <div class="col-md-6">
         <div class="card mb-3 shadow card-theme">
-          <div class="card-header card-header-theme">
+          <div class="card-header card-header-theme d-flex justify-content-between align-items-center">
             <h5>Orders by Customers</h5>
+            <button (click)="navigateToPieChartDetail()" class="btn btn-sm btn-outline-secondary">
+              View Details <i class="fas fa-arrow-right"></i>
+            </button>
           </div>
           <div class="card-body">
-            <app-pie-chart></app-pie-chart>
+            <app-pie-chart *ngIf="salesDataByCustomer" [inputData]="salesDataByCustomer" [limit]="5"
+              [isDetailedView]="false">
+            </app-pie-chart>
           </div>
         </div>
       </div>
     </div>
-    
+
+    <!-- Second Row - Single Card Full Width -->
     <div class="row">
-      <!-- Second Row - Single Card Full Width -->
       <div class="col-12">
         <div class="card mb-3 shadow card-theme">
-          <div class="card-header card-header-theme">
-            <h5>Orders by State</h5>
+          <div class="card-header card-header-theme d-flex justify-content-between align-items-center">
+            <h5>Customer Orders Over Dates</h5>
+            <button (click)="navigateToLineChartDetail()" class="btn btn-sm btn-outline-secondary">
+              View Details <i class="fas fa-arrow-right"></i>
+            </button>
           </div>
           <div class="card-body">
-            <app-line-chart></app-line-chart>
+            <app-line-chart [isDetailedView]="false"></app-line-chart>
           </div>
         </div>
       </div>
