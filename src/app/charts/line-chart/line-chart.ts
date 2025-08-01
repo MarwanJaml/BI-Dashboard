@@ -1,6 +1,5 @@
 import { CommonModule, Location } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { LINE_CHART_COLORS } from '../../shared/chart.colors';
 import { SalesDataService } from '../../services/sales-data.service';
@@ -42,7 +41,17 @@ export class LineChartComponent implements OnInit {
       tooltip: {
         enabled: true,
         mode: 'index',
-        intersect: false
+        intersect: false,
+        backgroundColor: '#2A3037', // Dark background
+        titleColor: '#06bbcf', // Teal titles
+        bodyColor: '#f7fff7', // White text
+        borderColor: '#494194', // Purple border
+        borderWidth: 1,
+        padding: 12,
+        bodyFont: {
+          family: "'Source Sans Pro', sans-serif"
+        },
+        displayColors: false // Hide color boxes
       }
     },
     scales: {
@@ -102,7 +111,11 @@ export class LineChartComponent implements OnInit {
         }, [] as any[]);
 
         dates = [].concat.apply([], dates);
-        console.log('dates:', dates);
+
+        // Filter dates BEFORE processing - this is the key fix
+        const cutoffDate = new Date('2025-11-04');
+        dates = dates.filter((date: Date) => date <= cutoffDate);
+        console.log('Filtered dates before processing:', dates);
 
         const result = this.getCustomerOrdersByDate(allChartData, dates);
         console.log('result:', result);

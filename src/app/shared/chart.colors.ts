@@ -28,7 +28,7 @@ export const LINE_CHART_COLORS = [
   },
   {
     backgroundColor: 'rgba(135, 53, 53, 0.7)',
-    borderColor: 'rgba(225, 5, 5, 1)',
+    borderColor: 'rgba(237, 11, 11, 1)',
     pointBackgroundColor: '#000',
     pointBorderColor: '#000',
     pointHoverBackgroundColor: '#555',

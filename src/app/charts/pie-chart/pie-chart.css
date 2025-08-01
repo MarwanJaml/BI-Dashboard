@@ -1,19 +1,161 @@
 /* bar-chart.component.css */
-.detailed-view {
-    height: 100vh;
-    /* Full viewport height */
-    width: 100vw;
-    /* Full viewport width */
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1050;
-    /* Ensure it appears above other content */
-    background: white;
+/* Use :host to scope styles to this component only */
+
+/* Default chart container for dashboard cards */
+:host .chart-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    min-height: 300px;
 }
 
-.detailed-view canvas {
+:host canvas {
     width: 100% !important;
     height: 100% !important;
+}
+
+/* Chart wrapper for detailed view */
+:host .chart-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+:host .chart-wrapper canvas {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* Chart explanation panel styles */
+:host .chart-explanation {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid #f7fff7;
+    overflow-y: auto;
+}
+
+:host .chart-explanation h6 {
+    color: #f7fff7;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(247, 255, 247, 0.2);
+    padding-bottom: 10px;
+}
+
+:host .explanation-content {
+    height: calc(100% - 60px);
+    overflow-y: auto;
+}
+
+:host .text-light {
+    color: #f7fff7;
+}
+
+:host .text-light-gray {
+    color: #b8c0c8;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+:host .text-light-gray ul {
+    padding-left: 1.2rem;
+}
+
+:host .text-light-gray li {
+    margin-bottom: 0.5rem;
+}
+
+:host .text-muted {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+:host .border-secondary {
+    border-color: rgba(247, 255, 247, 0.2) !important;
+}
+
+/* Full view styles - only apply when this class is present */
+:host .full-view-wrapper {
+    height: calc(100vh - 200px);
     min-height: 500px;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+}
+
+:host .full-view-wrapper .chart-container {
+    height: 100%;
+    min-height: calc(100vh - 300px);
+}
+
+:host .full-view-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Back button styling */
+:host .btn-outline-light {
+    border-color: #f7fff7;
+    color: #f7fff7;
+}
+
+:host .btn-outline-light:hover {
+    background-color: #f7fff7;
+    color: #2A3037;
+}
+
+/* Full page layout - only for detailed view */
+:host .detailed-view {
+    position: fixed;
+    top: 56px;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+    background-color: #1C2228;
+    z-index: 1000;
+}
+
+:host .detailed-view .card-theme {
+    height: calc(100vh - 120px);
+    margin: 15px;
+}
+
+:host .detailed-view .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    :host .detailed-view {
+        left: 0;
+    }
+
+    :host .full-view-wrapper {
+        height: calc(100vh - 160px);
+        min-height: 300px;
+        padding: 15px;
+    }
+
+    :host .chart-container {
+        min-height: 250px;
+    }
+
+    /* Stack explanation below chart on mobile */
+    :host .chart-explanation {
+        margin-top: 20px;
+        height: auto !important;
+        min-height: 250px;
+    }
+
+    /* Make chart wrapper smaller on mobile to leave room for explanation */
+    :host .chart-wrapper {
+        max-height: 60%;
+    }
 }

@@ -88,9 +88,12 @@ a:hover {
     color: #44a4cd;
 }
 
-.sidebar .active {
-    background-color: #44a4cd;
-    color: white;
+.sidebar .nav-pills .nav-link.active,
+.sidebar .nav-pills .nav-item .nav-link.active,
+ul.nav.nav-pills .nav-link.active {
+    background-color: #28a745 !important;
+    color: white !important;
+    border-color: transparent !important;
 }
 
 /* Main Content Area */
@@ -268,7 +271,7 @@ a:hover {
     }
 
     .clickable-header:hover {
-        color: #4e73df;
+        color: #2bda5a;
         /* Use your theme color */
     }
 

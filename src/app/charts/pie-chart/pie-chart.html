@@ -1,10 +1,11 @@
 <!-- Dashboard view (default) -->
 <div *ngIf="!isDetailedView" class="chart-container">
   <div class="chart-container" *ngIf="pieChartData.datasets[0].data.length > 0">
-    <canvas baseChart [data]="pieChartData" [options]="pieChartOptions" [type]="pieChartType" (click)="onChartClick()">
+    <canvas baseChart [data]="pieChartData" [options]="pieChartOptions" [type]="pieChartType">
     </canvas>
   </div>
 </div>
+
 <!-- Detailed view (full screen) -->
 <div *ngIf="isDetailedView" class="detailed-view">
   <div class="container-fluid h-100 p-0 m-0">
@@ -17,10 +18,47 @@
               <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
             </button>
           </div>
-          <div class="card-body p-0 h-100">
-            <div class="h-100 w-100" *ngIf="pieChartData.datasets[0].data.length > 0">
-              <canvas baseChart [data]="pieChartData" [options]="pieChartOptions" [type]="pieChartType">
-              </canvas>
+          <div class="card-body p-3 h-100">
+            <div class="row h-100" *ngIf="pieChartData.datasets[0].data.length > 0">
+              <!-- Chart Column -->
+              <div class="col-lg-8 col-md-7 h-100">
+                <div class="chart-wrapper h-100">
+                  <canvas baseChart [data]="pieChartData" [options]="pieChartOptions" [type]="pieChartType">
+                  </canvas>
+                </div>
+              </div>
+              <!-- Explanation Panel -->
+              <div class="col-lg-4 col-md-5 h-100">
+                <div class="chart-explanation h-100">
+                  <h6 class="text-light mb-3">Chart Analysis</h6>
+                  <div class="explanation-content">
+                    <p class="text-light-gray">
+                      This pie chart shows the distribution of orders across different customers. Each slice represents
+                      a customer's share of total orders.
+                    </p>
+                    <p class="text-light-gray">
+                      Key insights from this visualization:
+                    </p>
+                    <ul class="text-light-gray">
+                      <li>Customer order distribution patterns</li>
+                      <li>Top contributing customers</li>
+                      <li>Market concentration analysis</li>
+                      <li>Customer loyalty indicators</li>
+                    </ul>
+                    <div class="mt-4 pt-3 border-top border-secondary">
+                      <h6 class="text-light mb-2">Legend</h6>
+                      <p class="text-light-gray small">
+                        Hover over chart segments to see detailed customer information and order counts.
+                      </p>
+                    </div>
+                    <div class="mt-4">
+                      <small class="text-muted">
+                        Data represents total orders per customer. Click chart for additional details.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

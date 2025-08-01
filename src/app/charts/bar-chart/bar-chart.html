@@ -1,7 +1,7 @@
 <!-- bar-chart.component.html -->
 <!-- Dashboard view (default) -->
 <div *ngIf="!isDetailedView" class="chart-container">
-  <div class="chart" (click)="onChartClick()">
+  <div class="chart">
     <canvas baseChart *ngIf='barChartData && barChartData.length > 0' [datasets]="barChartData"
       [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"></canvas>
   </div>
@@ -21,12 +21,42 @@
           </div>
           <div class="card-body">
             <div class="full-view-wrapper">
-              <div class="chart-container">
-                <div class="chart" (click)="onChartClick()" style="cursor: pointer;">
-                  <canvas baseChart *ngIf='barChartData && barChartData.length > 0' [datasets]="barChartData"
-                    [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"></canvas>
+              <div class="row h-100">
+                <!-- Chart Column -->
+                <div class="col-lg-8 col-md-7">
+                  <div class="chart-container">
+                    <div class="chart" (click)="onChartClick()" style="cursor: pointer;">
+                      <canvas baseChart *ngIf='barChartData && barChartData.length > 0' [datasets]="barChartData"
+                        [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"></canvas>
+                    </div>
+                  </div>
                 </div>
-
+                <!-- Explanation Panel -->
+                <div class="col-lg-4 col-md-5">
+                  <div class="chart-explanation">
+                    <h6 class="text-light mb-3">Chart Analysis</h6>
+                    <div class="explanation-content">
+                      <p class="text-light-gray">
+                        This chart displays daily order totals aggregated by date. Each bar represents the sum of all
+                        orders placed on that specific day.
+                      </p>
+                      <p class="text-light-gray">
+                        The data helps identify trends in order volume and can be used to:
+                      </p>
+                      <ul class="text-light-gray">
+                        <li>Track daily sales performance</li>
+                        <li>Identify peak ordering days</li>
+                        <li>Monitor business growth trends</li>
+                        <li>Plan inventory and staffing</li>
+                      </ul>
+                      <div class="mt-4">
+                        <small class="text-muted">
+                          Data refreshed every 24 hours. Click anywhere on the chart for more details.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

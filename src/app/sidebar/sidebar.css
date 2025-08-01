@@ -1,15 +1,23 @@
-#sideBar{
+#sideBar {
     height: 100vh;
     padding-top: 50px;
     position: fixed;
     background-color: #191F26;
 }
 
-#dashboard{
+#dashboard {
     margin-top: 60px;
 }
 
-#navbar{
-    background-color: #161A1E!important;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2), 0 3px 6px rgba(0,0,0,0.25);
+#navbar {
+    background-color: #161A1E !important;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar .nav-pills .nav-link.active,
+.sidebar .nav-pills .nav-item .nav-link.active,
+ul.nav.nav-pills .nav-link.active {
+    background-color: #28a745 !important;
+    color: white !important;
+    border-color: transparent !important;
 }

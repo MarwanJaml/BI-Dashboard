@@ -1,28 +1,64 @@
 <!-- Dashboard view (default) -->
 <div *ngIf="!isDetailedView" class="chart-container">
   <div class="chart">
-    <canvas baseChart *ngIf="lineChartData" [type]="lineChartType" [datasets]="lineChartData" [labels]="lineChartLabels"
-      [options]="lineChartOptions">
+    <canvas baseChart [type]="'line'" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+      [legend]="true">
     </canvas>
   </div>
 </div>
+
 <!-- Detailed view (full screen) -->
 <div *ngIf="isDetailedView" class="detailed-view">
-  <div class="container-fluid h-100 p-0">
-    <div class="row h-100 m-0">
-      <div class="col-12 h-100 p-0">
-        <div class="card h-100 mb-0 shadow card-theme">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-3 shadow card-theme">
           <div class="card-header card-header-theme d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Daily Orders - Detailed View</h5>
             <button class="btn btn-outline-light btn-sm" (click)="goBack()">
               <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
             </button>
           </div>
-          <div class="card-body p-0 detailed-chart-body">
-            <div class="chart-container full-size-chart">
-              <canvas baseChart *ngIf="lineChartData" [type]="lineChartType" [datasets]="lineChartData"
-                [labels]="lineChartLabels" [options]="lineChartOptions">
-              </canvas>
+          <div class="card-body">
+            <div class="full-view-wrapper">
+              <div class="row h-100">
+                <!-- Chart Column -->
+                <div class="col-lg-8 col-md-7">
+                  <div class="chart-container">
+                    <div class="chart" (click)="onChartClick()" style="cursor: pointer;">
+                      <canvas baseChart [type]="'line'" [datasets]="lineChartData" [labels]="lineChartLabels"
+                        [options]="lineChartOptions" [legend]="true">
+                      </canvas>
+                    </div>
+                  </div>
+                </div>
+                <!-- Explanation Panel -->
+                <div class="col-lg-4 col-md-5">
+                  <div class="chart-explanation">
+                    <h6 class="text-light mb-3">Chart Analysis</h6>
+                    <div class="explanation-content">
+                      <p class="text-light-gray">
+                        This line chart displays daily order totals over time. Each point represents the sum of all
+                        orders placed on that specific day, connected to show trends.
+                      </p>
+                      <p class="text-light-gray">
+                        The data helps identify trends in order volume and can be used to:
+                      </p>
+                      <ul class="text-light-gray">
+                        <li>Track sales performance trends</li>
+                        <li>Identify seasonal patterns</li>
+                        <li>Monitor growth trajectories</li>
+                        <li>Forecast future demand</li>
+                      </ul>
+                      <div class="mt-4">
+                        <small class="text-muted">
+                          Data refreshed every 24 hours. Hover over points for detailed values.
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

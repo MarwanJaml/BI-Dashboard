@@ -49,6 +49,7 @@ export class BarChartComponent implements OnInit {
           display: false
         }
       },
+
       y: {
         beginAtZero: true
       }

@@ -33,6 +33,46 @@
     height: 100% !important;
 }
 
+/* Chart explanation panel styles */
+:host .chart-explanation {
+    height: 100%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid #f7fff7;
+}
+
+:host .chart-explanation h6 {
+    color: #f7fff7;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(247, 255, 247, 0.2);
+    padding-bottom: 10px;
+}
+
+:host .explanation-content {
+    height: calc(100% - 60px);
+    overflow-y: auto;
+}
+
+:host .text-light-gray {
+    color: #b8c0c8;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+:host .text-light-gray ul {
+    padding-left: 1.2rem;
+}
+
+:host .text-light-gray li {
+    margin-bottom: 0.5rem;
+}
+
+:host .text-muted {
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
 /* Back button styling */
 :host .btn-outline-light {
     border-color: #f7fff7;
@@ -82,5 +122,12 @@
 
     :host .chart-container {
         min-height: 250px;
+    }
+
+    /* Stack explanation below chart on mobile */
+    :host .chart-explanation {
+        margin-top: 20px;
+        height: auto;
+        min-height: 200px;
     }
 }
